@@ -1,8 +1,11 @@
 package com.harshil.controllers;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.mail.MessagingException;
+import javax.mail.internet.AddressException;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.harshil.mail.SendMail;
 import com.harshil.models.ERole;
 import com.harshil.models.Role;
 import com.harshil.models.User;
@@ -51,8 +55,7 @@ public class AuthController {
 
 	@Autowired
 	UserController userController;
-	
-	
+
 	@PostMapping("/signin")
 	public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
 
@@ -71,7 +74,8 @@ public class AuthController {
 	}
 
 	@PostMapping("/signup")
-	public ResponseEntity<?> registerUser(@Valid @RequestBody SignupRequest signUpRequest) {
+	public ResponseEntity<?> registerUser(@Valid @RequestBody SignupRequest signUpRequest)
+			throws AddressException, MessagingException, IOException {
 		if (userRepository.existsByUsername(signUpRequest.getUsername())) {
 			return ResponseEntity.badRequest().body(new MessageResponse("Error: Username is already taken!"));
 		}
@@ -82,7 +86,7 @@ public class AuthController {
 
 		// Create new user's account
 		User user = new User(signUpRequest.getUsername(), signUpRequest.getEmail(),
-				encoder.encode(signUpRequest.getPassword()), signUpRequest.getName(), false);
+				encoder.encode(""/* signUpRequest.getPassword() */), signUpRequest.getName(), false);
 
 		String strRoles = signUpRequest.getRole();
 		Role role = new Role();
@@ -114,9 +118,10 @@ public class AuthController {
 		}
 
 		user.setRole(role);
-		user.setStatus(true);
+		user.setStatus(false);
 		userController.createUser(user);
 //		userRepository.save(user);
+		SendMail.sendmail(user.getEmail(), user.getId());
 
 		return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
 	}

@@ -13,6 +13,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { authInterceptorProviders } from './_helpers/auth.interceptor';
 import { UsersComponent } from './users/users.component';
 import { Globals } from './globals';
+import { PasswordComponent } from './password/password/password.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { Globals } from './globals';
     LoginComponent,
     RegisterComponent,
     ProfileComponent,
-    UsersComponent
+    UsersComponent,
+    PasswordComponent
   ],
   imports: [
     BrowserModule,

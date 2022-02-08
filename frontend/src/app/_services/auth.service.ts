@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import {Globals} from '../globals';
+import { Globals } from '../globals';
 
 const AUTH_API = Globals.BACKEND_URL + 'api/auth/';
 
@@ -27,9 +27,11 @@ export class AuthService {
     return this.http.post(AUTH_API + 'signup', {
       username: user.username,
       email: user.email,
-      password: user.password,
+      // password: user.password,
       name: user.name,
       role: user.role
     }, httpOptions);
   }
+
+ 
 }
