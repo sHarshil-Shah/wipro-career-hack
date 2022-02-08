@@ -29,10 +29,8 @@ ERROR:String="";
 
   delete(id) {
     this.userData.delete(id).subscribe(data => {
-        // console.log(data);
         window.location.reload();
     },err=>{
-      // console.log(err);
       this.ERROR = err.error.message;
     });
 
