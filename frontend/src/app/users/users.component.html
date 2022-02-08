@@ -1,0 +1,35 @@
+
+<button type="button" class="btn btn-primary" (click)="register();">Add New User</button>
+
+
+<div class="container">
+    <div class="row">
+      <div class="col-12">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">User Name</th>
+              <th scope="col">Email ID</th>
+              <th scope="col">Full Name</th>
+              <th scope="col">Status</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+
+            <tr *ngFor="let user of users">
+                <td>{{user.id}}</td>
+                <td>{{user.username}}</td>
+                <td>{{user.email}}</td>
+                <td>{{user.fullName}}</td>
+                <td>{{!user.status?"pending":"active"}}</td>
+                <td>
+                    <button type="button" class="btn btn-primary" (click)="delete(user.id)">Delete</button>
+                </td>
+             </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
