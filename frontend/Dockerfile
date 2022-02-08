@@ -7,6 +7,9 @@ RUN npm install
 RUN npm run build --prod
 
 #stage 2
-FROM nginx:alpine
+FROM nginx:1.15.2-alpine
 
-COPY --from=node /app/dist/frontend /usr/share/nginx/html
+COPY --from=node /app/dist/frontend /var/www
+COPY nginx.conf /etc/nginx/nginx.conf
+EXPOSE 80
+ENTRYPOINT ["nginx", "-g", "daemon off;"]
