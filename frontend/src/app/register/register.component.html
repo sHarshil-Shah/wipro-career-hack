@@ -16,7 +16,7 @@
           </div>
         </div>
       </div>
-      <div class="form-group">
+      <div class="form-group ">
         <label for="email">Email</label>
         <input type="email" class="form-control" name="email" [(ngModel)]="form.email" required email
           #email="ngModel" />
@@ -31,6 +31,20 @@
         <label for="name">Full Name</label>
         <input type="text" class="form-control" name="name" [(ngModel)]="form.name" required />
       </div>
+
+      <div class="form-group">
+        <label for="role">Select Role</label>
+        <label class="radio-inline">
+          <input id="inlineradio1" name="role" [(ngModel)]="form.role" value="LEVEL1" type="radio">
+          LEVEL 1</label>
+        <label class="radio-inline">
+          <input id="inlineradio2" name="role" [(ngModel)]="form.role" value="LEVEL2" type="radio">
+          LEVEL 2</label>
+        <label class="radio-inline">
+          <input id="inlineradio3" name="role" [(ngModel)]="form.role" value="LEVEL3" type="radio">
+          LEVEL 3</label>
+      </div>
+
       <div class="form-group">
         <label for="password">Password</label>
         <input type="password" class="form-control" name="password" [(ngModel)]="form.password" required minlength="6"
@@ -42,8 +56,8 @@
           </div>
         </div>
       </div>
-     
-      
+
+
       <div class="form-group">
         <button class="btn btn-primary btn-block">Sign Up</button>
       </div>
@@ -58,4 +72,3 @@
     </div>
   </div>
 </div>
-

@@ -1,7 +1,8 @@
 
 <button type="button" class="btn btn-primary" (click)="register();">Add New User</button>
-
-
+<h2>
+{{ERROR}}
+</h2>
 <div class="container">
     <div class="row">
       <div class="col-12">
@@ -12,6 +13,7 @@
               <th scope="col">User Name</th>
               <th scope="col">Email ID</th>
               <th scope="col">Full Name</th>
+              <th scope="col">Role</th>
               <th scope="col">Status</th>
               <th scope="col">Action</th>
             </tr>
@@ -23,6 +25,7 @@
                 <td>{{user.username}}</td>
                 <td>{{user.email}}</td>
                 <td>{{user.fullName}}</td>
+                <td>{{user.role.name}}</td>
                 <td>{{!user.status?"pending":"active"}}</td>
                 <td>
                     <button type="button" class="btn btn-primary" (click)="delete(user.id)">Delete</button>

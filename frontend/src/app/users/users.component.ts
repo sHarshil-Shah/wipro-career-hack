@@ -8,7 +8,7 @@ import { UserDataService } from '../_services/user-data.service';
 })
 export class UsersComponent implements OnInit {
 
-
+ERROR:String="";
   users: Array<any>;
   constructor(private userData: UserDataService, private router: Router) { }
 
@@ -17,7 +17,7 @@ export class UsersComponent implements OnInit {
   ngOnInit(): void {
 
     this.userData.getPublicContent().subscribe(data => {
-      console.log(data);
+      // console.log(data);
 
       this.users = data;
     });
@@ -29,9 +29,12 @@ export class UsersComponent implements OnInit {
 
   delete(id) {
     this.userData.delete(id).subscribe(data => {
-
+        // console.log(data);
+        window.location.reload();
+    },err=>{
+      // console.log(err);
+      this.ERROR = err.error.message;
     });
-    window.location.reload();
 
   }
 }
