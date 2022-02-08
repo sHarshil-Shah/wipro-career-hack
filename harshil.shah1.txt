@@ -1,0 +1,2 @@
+Frontend: 65.0.20.254 -> EC2 instance -> angular app running on docker 80 port using Nginx
+Backend: 65.1.105.69:8083 -> Elastic IP is used & Session manager is configured by Attaching appropriate IAM role to EC2
