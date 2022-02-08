@@ -17,8 +17,6 @@ ERROR:String="";
   ngOnInit(): void {
 
     this.userData.getPublicContent().subscribe(data => {
-      // console.log(data);
-
       this.users = data;
     });
   }
@@ -31,7 +29,11 @@ ERROR:String="";
     this.userData.delete(id).subscribe(data => {
         window.location.reload();
     },err=>{
-      this.ERROR = err.error.message;
+      if(err.error.text === "Deleted Successfully"){
+        window.location.reload()
+      }else{
+        this.ERROR = "Couldn't Delete data of ID " + id +": " + err.error.message;
+      }
     });
 
   }

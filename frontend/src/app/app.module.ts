@@ -12,6 +12,7 @@ import { ProfileComponent } from './profile/profile.component';
 
 import { authInterceptorProviders } from './_helpers/auth.interceptor';
 import { UsersComponent } from './users/users.component';
+import { Globals } from './globals';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,7 @@ import { UsersComponent } from './users/users.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent]

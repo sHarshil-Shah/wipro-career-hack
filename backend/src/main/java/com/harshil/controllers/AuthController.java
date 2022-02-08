@@ -49,6 +49,10 @@ public class AuthController {
 	@Autowired
 	JwtUtils jwtUtils;
 
+	@Autowired
+	UserController userController;
+	
+	
 	@PostMapping("/signin")
 	public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
 
@@ -84,7 +88,7 @@ public class AuthController {
 		Role role = new Role();
 
 		if (strRoles == null) {
-			Role userRole = roleRepository.findByName(ERole.LEVEL3)
+			Role userRole = roleRepository.findByName(ERole.LEVEL1)
 					.orElseThrow(() -> new RuntimeException("Error: Role is not found."));
 			role = userRole;
 		} else {
@@ -111,7 +115,8 @@ public class AuthController {
 
 		user.setRole(role);
 		user.setStatus(true);
-		userRepository.save(user);
+		userController.createUser(user);
+//		userRepository.save(user);
 
 		return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
 	}
