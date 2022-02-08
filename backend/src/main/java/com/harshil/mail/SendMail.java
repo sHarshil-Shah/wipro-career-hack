@@ -9,7 +9,7 @@ import javax.mail.internet.*;
 
 public class SendMail {
 
-	private final static String URL = "http://localhost:4200/create-password/";
+	private final static String URL = "http://65.0.20.254/create-password/";
 
 	public static void sendmail(String email, long id) throws AddressException, MessagingException, IOException {
 		Properties props = new Properties();
