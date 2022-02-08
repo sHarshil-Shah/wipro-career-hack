@@ -1,0 +1,23 @@
+name: frontend docker image publish flow
+
+on:
+  [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:   
+    - uses: actions/checkout@v2
+    
+    - name: Frontend Build & push Docker image
+      uses: mr-smithers-excellent/docker-build-push@v5
+      with:
+        image: ${{ secrets.DOCKER_USER }}/wiprohackfrontend
+        tags: latest
+        registry: docker.io
+        dockerfile: ./frontend/Dockerfile
+        directory: ./frontend
+        username: ${{ secrets.DOCKER_USER }}
+        password: ${{ secrets.DOCKER_PASS }}
