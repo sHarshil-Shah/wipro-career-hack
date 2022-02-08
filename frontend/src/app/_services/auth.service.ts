@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Globals } from '../Globals';
+import {Globals} from '../globals';
 
 const AUTH_API = Globals.BACKEND_URL + 'api/auth/';
 

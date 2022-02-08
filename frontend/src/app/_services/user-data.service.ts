@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-import {Globals} from '../Globals';
+import {Globals} from '../globals';
 
 const API_URL = Globals.BACKEND_URL+'api/users/';
 
