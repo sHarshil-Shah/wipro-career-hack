@@ -121,7 +121,7 @@ public class AuthController {
 		user.setStatus(false);
 		userController.createUser(user);
 //		userRepository.save(user);
-		SendMail.sendmail(user.getEmail(), user.getId());
+//		SendMail.sendmail(user.getEmail(), user.getId());
 
 		return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
 	}
